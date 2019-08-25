@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TesteCampoTreinamento {
 	
@@ -18,21 +20,25 @@ public class TesteCampoTreinamento {
 	private String Url = "file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html";
 	
 	@Test
-	public void teste() {
+	public void teste() throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jussa\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		//driver.get("file:///D:/Projetos/Pessoal-Teste/campo-treinamento/componentes.html");
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
+		Thread.sleep(10000);
 		driver.quit();
 	}
 	
 	@Test
 	public void testePreencherNome() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jussa\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
 		driver.findElement(By.id("elementosForm:nome")).sendKeys("NOME");
 		assertEquals("NOME", driver.findElement(By.id("elementosForm:nome")).getAttribute("value"));
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	
