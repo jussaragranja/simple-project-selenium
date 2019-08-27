@@ -1,4 +1,4 @@
-package br.com.simpleProjectSelenium.test;
+package br.com.simpleProjectSelenium;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -12,18 +12,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TesteCampoTreinamento {
+public class TesteCampoTreinamento extends BasicPage {
 	
 	
 	private String Url = "file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html";
 	
 	@Test
 	public void teste() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\jussa\\Downloads\\chromedriver_win32\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
 		//driver.get("file:///D:/Projetos/Pessoal-Teste/campo-treinamento/componentes.html");
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
 		Thread.sleep(10000);
@@ -90,8 +86,6 @@ public class TesteCampoTreinamento {
 	
 	@Test
 	public void deveVerificarValoresComboBoxSelect() {
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/test/resources/componentes.html");
 		WebElement elemento = driver.findElement(By.id("elementosForm:escolaridade"));
 		Select comboBox = new Select(elemento);
@@ -109,7 +103,6 @@ public class TesteCampoTreinamento {
 		
 		assertTrue(encontrou);
 		
-		driver.quit();
 	}
 	
 	@Test
